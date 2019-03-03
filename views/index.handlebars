@@ -87,7 +87,26 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-preview">
+
+            {{#each posts}}
+            <div class="post-preview">
+                <a href="post.html">
+                    <h2 class="post-title">
+                        {{this.title}}
+                    </h2>
+                    <h3 class="post-subtitle">
+                        {{this.summary}}
+                    </h3>
+                </a>
+                </a>
+                <!-- <p class="post-meta">
+                    {{this.content}}
+                </p> -->
+                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
+            </div>
+            <hr>
+            {{/each}}
+                {{!-- <div class="post-preview">
                     <a href="post.html">
                         <h2 class="post-title">
                             Man must explore, and this is exploration at its greatest
@@ -131,6 +150,7 @@
                     </a>
                     <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
                 </div>
+                 --}}
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
@@ -146,7 +166,7 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container">
+        {{!-- <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <ul class="list-inline text-center">
@@ -178,7 +198,8 @@
                     <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
                 </div>
             </div>
-        </div>
+        </div> --}}
+        {{>footer}}
     </footer>
 
     <!-- jQuery -->

@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbars = require('express-handlebars'); // load the package
+const posts = require('./data/blogPosts');
 const app = express();
 app.engine('handlebars', exphbars()); // initialise the handlebars engine
 app.set('view engine', 'handlebars'); // specify engine for page rendering
@@ -12,19 +13,24 @@ app.get('/', (req, res) => {
 	//	res.render('index'); we can console.log here to make sure it is working
 	res.render('index', {
 		// hrer we create object and use it
+		page: 'Home',
 		Myname: 'Name',
 		firstName: '<h1>Samira</h1>',
 		secondName: 'Maaly',
-		date: new Date().toLocaleString()
+		date: new Date().toLocaleString(),
 		// date: Date(Date.now())
 		// date: `${new Date().getMonth() + 1} / ${new Date().getFullYear()}`
 		//date: new Date().toLocaleDateString("en-GB", options)
+		posts: posts
 	});
 });
 
 app.get('/my-cv', (req, res) => {
 	//	res.sendFile(__dirname + '/views/my-cv.html');
-	res.render('my-cv');
+	//	res.render('my-cv');
+	res.render('my-cv', {
+		page: 'CV'
+	});
 });
 
 const SERVER_PORT = process.env.PORT || 3000;
