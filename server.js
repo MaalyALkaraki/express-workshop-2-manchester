@@ -33,6 +33,17 @@ app.get('/my-cv', (req, res) => {
 	});
 });
 
+//open posts in new tab
+app.get('/readpost/:id', (req, res) => {
+	// res.sendFile(__dirname + "/views/my-cv.html");
+	const id = req.params.id;
+	res.render('post', {
+		title: posts[parseInt(id)].title,
+		summary: posts[parseInt(id)].summary,
+		content: posts[parseInt(id)].content
+	});
+}); //http://localhost:3000/readpost/1 to check if it is working
+
 const SERVER_PORT = process.env.PORT || 3000;
 app.listen(SERVER_PORT, function() {
 	console.log(`Server is listening on port ${SERVER_PORT}. Ready to accept requests!`);
